@@ -1,11 +1,17 @@
 // Details from NSW Gov API Keys
-const key = '81rF6y0higQPTXKVA3ymQNVewuSlyHAI';		// Consumer Key
-const secret = 'I82dDAWMCpyV67IN';			// Consume secret
 
 var http		= require( "http" ),
  	https		= require( "https" ),
 	parseXML	= require( "xml2js" ).parseString,
-	moment		= require( "moment" )
+	moment		= require( "moment" ),
+	key			= process.env.KEY || "",
+	secret		= process.env.SECRET || ""
+	
+if ( !process.env.KEY || !process.env.SECRET ) {
+	require( "dotenv" ).load();
+	key = process.env.KEY || key;
+	secret = process.env.SECRET || secret;
+}
 
 // Retrieve the NSW fuel app data http://www.fuelcheck.nsw.gov.au/
 function getFuelAppData( latitude, longitude, radius, fueltype, brand, callback, ranking ) {
