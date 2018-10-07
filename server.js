@@ -1,8 +1,8 @@
 var express		= require( "express" ),
 	bodyParser	= require( "body-parser" ),
 	fuel		= require( "./routes/fuel.js" ),
-	host		= process.env.HOST || "192.168.3.4",
-	port		= process.env.PORT || 3010,
+	host		= process.env.HOST || "127.0.0.1",
+	port		= process.env.PORT || 4000,
 	app			= express();
 
 if ( !process.env.HOST || !process.env.PORT ) {
